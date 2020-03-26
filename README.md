@@ -2,7 +2,7 @@
 
 Repository for example apps made with Doorman's phone authentication solution for Expo + Firebase apps.
 
-PRs welcome 😇
+PRs welcome if you make an example of your own.
 
 ## 🧐 What is [Doorman](https://doorman.cool)?
 

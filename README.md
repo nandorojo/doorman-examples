@@ -4,7 +4,7 @@ Repository for example apps made with Doorman's phone authentication solution fo
 
 PRs welcome if you make an example of your own.
 
-## 🧐 What is [Doorman](https://doorman.cool)?
+## 🧐 What is [Doorman](https://doorman.cool)? Expo + Firebase phone auth
 
 Doorman lets React Native developers add phone authentication to their apps with ease. It works perfectly with **Firebase Auth and Expo**.
 

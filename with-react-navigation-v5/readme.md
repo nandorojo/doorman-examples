@@ -7,8 +7,8 @@ By default, Doorman implements its own "stack". However, if you're using React N
 ## 🏄🏾‍♂️ To try out this example:
 
 ```sh
-git clone https://github.com/nandorojo/doorman
-cd examples/with-react-navigation-v4
+git clone https://github.com/nandorojo/doorman-examples
+cd with-react-navigation-v5
 yarn
 expo start --ios # or expo start --android
 ```

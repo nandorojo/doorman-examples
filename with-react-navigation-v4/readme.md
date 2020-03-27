@@ -21,6 +21,8 @@ This example uses our test account's `publicProjectId` (found on the Doorman das
 
 To **deploy this in your own app**, you'll need to 1) [create a project](https://app.doorman.cool) on Doorman's dashboard, and 2) follow the Doorman [setup guide](https://docs.doorman.cool/introduction/getting-started).
 
+After that, replace the `publicProjectId` in `src/App.tsx` with yours. Also, replace the `firebase.initializeApp()` argument with your firebase config in the same file.
+
 ---
 
 ## 🧐 What is [Doorman](https://doorman.cool)?

@@ -1,4 +1,4 @@
-# 🚪 👾 Doorman + React Navigation v4 example
+# 🚪 ⚡️ Doorman + React Navigation v5 example
 
 By default, Doorman implements its own "stack". However, if you're using React Navigation, this example shows you how to take more ownership of your auth flow by making your own stack instead.
 
@@ -7,8 +7,8 @@ By default, Doorman implements its own "stack". However, if you're using React N
 ## 🏄🏾‍♂️ To try out this example:
 
 ```sh
-git clone https://github.com/nandorojo/doorman
-cd examples/with-react-navigation-v4
+git clone https://github.com/nandorojo/doorman-examples
+cd with-react-navigation-v5
 yarn
 expo start --ios # or expo start --android
 ```

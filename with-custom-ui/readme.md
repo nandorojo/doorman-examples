@@ -1,10 +1,18 @@
 # Doorman (React Native + Phone Auth)
 
-This example shows how to use Doorman with fully custom screens.
+This example shows how to use Doorman phone auth with fully custom screens.
+
+**Doorman** is a sign-in-with-phone-number SDK that integrates with Firebase auth and Expo.
 
 I'll leave the UI fully bare.
 
-## Overview
+## Table of Contents
+
+- TLDR
+- Clone
+- Full Tutorial
+
+## TLDR
 
 First, make sure you wrap your root app with the `DoormanProvider`, and pass your `publicProjectId` as a prop.
 

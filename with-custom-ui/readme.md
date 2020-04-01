@@ -176,9 +176,7 @@ However, for this example, we're building our own screens entirely.
 
 **Create a file called `Phone-Screen.tsx` in the `src` folder.**
 
-This is where the user will enter their phone number.
-
-Here we're going to create a screen where the user enters their phone number.
+As the name suggests, we're going to create a screen where the user enters their phone number.
 
 We're going to call the `doorman.signInWithPhoneNumber` function, and if it succeeds, we will send them to the code verification screen, like this:
 

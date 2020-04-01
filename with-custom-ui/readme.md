@@ -429,11 +429,11 @@ If you don't have an `App` component made, you can go on to step 7, where I'll m
 
 If you already have an app you want to show after the user has auth'd, you can put it in place of the `App` in `Navigation.tsx`.
 
-## 7. Create an `App.tsx` file
+## 7. Create `src/App.tsx`, shown after user is auth'd
 
-Our `App.tsx` component will be shown **after the user has signed in**.
+Our `src/App.tsx` component will be shown **after the user has signed in**.
 
-**`App.tsx`**
+**`src/App.tsx`**
 
 ```jsx
 import React from 'react'

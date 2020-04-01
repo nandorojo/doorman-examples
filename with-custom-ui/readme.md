@@ -184,7 +184,7 @@ We're going to call the `doorman.signInWithPhoneNumber` function, and if it succ
 const onSubmitPhone = async () => {
   const { success } = await doorman.signInWithPhoneNumber({ phoneNumber })
   if (success) {
-    navigate('ConfirmScreen')
+    navigate('ConfirmScreen', { phoneNumber })
   }
 }
 ```

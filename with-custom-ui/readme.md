@@ -6,13 +6,13 @@ This example shows how to use Doorman phone auth with fully custom screens, inst
 
 I'll leave the UI fully bare.
 
-## Table of Contents
+# Table of Contents
 
 - TLDR
 - Clone
 - Full Tutorial
 
-## TLDR
+# TLDR
 
 First, make sure you wrap your root app with the `DoormanProvider`, and pass your `publicProjectId` as a prop.
 
@@ -32,7 +32,7 @@ await doorman.verifyCode({
 
 We will use `Expo`, `Doorman Phone Verification`, `Firebase auth`, and `React Navigation v5`.
 
-## Clone example
+# Clone example
 
 ```
 git clone https://github.com/nandorojo/doorman-examples
@@ -41,9 +41,9 @@ yarn
 expo start
 ```
 
-## Tutorial
+# Tutorial
 
-### 0. Installing dependencies
+## 0. Installing dependencies
 
 First, install Doorman, its dependencies, and firebase:
 
@@ -59,7 +59,7 @@ yarn add @react-navigation/native @react-navigation/stack
 expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 ```
 
-### 1. Initialize Firebase & Doorman
+## 1. Initialize Firebase & Doorman
 
 Delete everything from `App.tsx` and replace it with this:
 
@@ -103,7 +103,7 @@ export default () => {
 
 You can replace the `publicProjectId` with your own.
 
-### 2. Create the "is authenticated" logic.
+## 2. Create the "is authenticated" logic.
 
 There are two scenarios for our app: **1.** the user is logged in, or **2.** the user is not logged in.
 
@@ -111,7 +111,7 @@ The screen we render depends on this state.
 
 Typically, we use Doorman's `AuthGate` component to handle this logic, but for this example, let's use the `useAuthGate` hook instead.
 
-#### Create a `src` folder and add a `Navigation.tsx` file
+### Create a `src` folder and add a `Navigation.tsx` file
 
 Our React Navigation logic goes in this screen.
 
@@ -151,7 +151,7 @@ It will look something like this:
 
 We'll come back to that soon. First, let's create our onboarding stack!
 
-### 3. Create our Phone entry screen
+## 3. Create our Phone entry screen
 
 Usually, this step is handled by using the `AuthFlow` from Doorman. Or, you can also use Doorman's `AuthFlow.PhoneScreen` and `AuthFlow.VerifyScreen`.
 
@@ -161,7 +161,7 @@ However, for this example, we're building our own screens entirely.
 
 This is where the user will enter their phone number.
 
-Here' we're going to create a screen where the user enters their phone number.
+Here we're going to create a screen where the user enters their phone number.
 
 We're going to call the `doorman.signInWithPhoneNumber` function, and if it succeeds, we will send them to the code verification screen, like this:
 
@@ -222,7 +222,7 @@ This screen is straight-forward. Once the user clicks sign in, we call `doorman.
 
 If `success` is `true`, then we navigate to the `ConfirmScreen`. Speaking of, let's create the `ConfirmScreen`!
 
-### 4. Create code verification screen
+## 4. Create code verification screen
 
 This screen will call the `doorman.verifyCode` function.
 

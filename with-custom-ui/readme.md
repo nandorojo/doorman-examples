@@ -1,8 +1,8 @@
-# Doorman (React Native + Phone Auth)
+# Doorman (React Native Phone Auth) Custom UI Example
 
-This example shows how to use Doorman phone auth with fully custom screens.
+This example shows how to use Doorman phone auth with fully custom screens, instead of Doorman's customizable UI.
 
-**Doorman** is a sign-in-with-phone-number SDK that integrates with Firebase auth and Expo.
+**Doorman** is a sign-in-with-phone-number SDK that integrates with Firebase auth and Expo. [Learn more here](https://doorman.cool)
 
 I'll leave the UI fully bare.
 
@@ -19,7 +19,7 @@ First, make sure you wrap your root app with the `DoormanProvider`, and pass you
 Next, there are two main functions we will use: `doorman.signInWithPhoneNumber` and `doorman.verifyCode`. They look like this:
 
 ```es6
-import { doorman } from 'react-native-Doorman`
+import { doorman } from 'react-native-doorman`
 
 await doorman.signInWithPhoneNumber({
 	phoneNumber: '+15555555555'
@@ -29,6 +29,8 @@ await doorman.verifyCode({
 	code: '111111'
 })
 ```
+
+We will use `Expo`, `Doorman Phone Verification`, `Firebase auth`, and `React Navigation v5`.
 
 ## Clone example
 
@@ -43,7 +45,7 @@ expo start
 
 ### 0. Installing dependencies
 
-First, install Doorman, and its dependencies, and firebase:
+First, install Doorman, its dependencies, and firebase:
 
 ```sh
 yarn add react-native-doorman firebase
@@ -137,7 +139,7 @@ export default Navigation
 
 Now we have a starter file! Here's the situation we want: If the user is **not signed in**, we render an onboarding stack. If the user **is signed in**, show our normal app.
 
-That's where the `useAuthGate` hook comes in. It automatically updates the state of the app when the auth state changes.
+That's where the `useAuthGate` hook comes in. It automatically updates the state of the app when the auth state changes. If the user is signed in, then the `user` returned by `useAuthGate` is the firebase auth object.
 
 It will look something like this:
 
@@ -145,4 +147,146 @@ It will look something like this:
 <NavigationContainer>
   {!!user ? <App /> : <OnboardingStack />}
 </NavigationContainer>
+```
+
+We'll come back to that soon. First, let's create our onboarding stack!
+
+### 3. Create our Phone entry screen
+
+Usually, this step is handled by using the `AuthFlow` from Doorman. Or, you can also use Doorman's `AuthFlow.PhoneScreen` and `AuthFlow.VerifyScreen`.
+
+However, for this example, we're building our own screens entirely.
+
+**Create a file called `Phone-Screen.tsx` in the `src` folder.**
+
+This is where the user will enter their phone number.
+
+Here' we're going to create a screen where the user enters their phone number.
+
+We're going to call the `doorman.signInWithPhoneNumber` function, and if it succeeds, we will send them to the code verification screen, like this:
+
+```es6
+const onSubmitPhone = async () => {
+  const { success } = await doorman.signInWithPhoneNumber({ phoneNumber })
+  if (success) {
+    navigate("ConfirmScreen")
+  }
+}
+```
+
+Here's the full file:
+
+**`src/Phone-Screen.tsx`**
+
+```jsx
+import React, { useState } from "react"
+import { View, StyleSheet, TextInput, Button } from "react-native"
+import { doorman } from "react-native-doorman"
+import { useNavigation } from "@react-navigation/native"
+
+const PhoneScreen = () => {
+  const [phoneNumber, setPhoneNumber] = useState("+1")
+  const { navigate } = useNavigation()
+
+  const onSubmitPhone = async () => {
+    const { success } = await doorman.signInWithPhoneNumber({ phoneNumber })
+    if (success) {
+      navigate("ConfirmScreen")
+    }
+  }
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        onChangeText={setPhoneNumber}
+        value={phoneNumber}
+        placeholder="Enter your phone number"
+        keyboardType="number-pad"
+      />
+      <Button title="Sign in!" onPress={onSubmitPhone} />
+    </View>
+  )
+}
+
+export default PhoneScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  }
+})
+```
+
+This screen is straight-forward. Once the user clicks sign in, we call `doorman.signInWithPhoneNumber`.
+
+If `success` is `true`, then we navigate to the `ConfirmScreen`. Speaking of, let's create the `ConfirmScreen`!
+
+### 4. Create code verification screen
+
+This screen will call the `doorman.verifyCode` function.
+
+This function returns a dictionary with a `token`, if the code is entered successfully.
+
+If the token works, we will call `firebase.signInWithCustomToken`, like this:
+
+```es6
+const onSubmitCode = async () => {
+  const { token } = await doorman.verifyCode({
+    code,
+    phoneNumber
+  })
+
+  if (token) {
+    firebase.auth().signInWithCustomToken(token)
+  }
+}
+```
+
+**`src/Confirm-Screen.tsx`**
+
+```jsx
+import React, { useState } from "react"
+import { View, TextInput, Button, StyleSheet } from "react-native"
+import { doorman } from "react-native-doorman"
+import { useRoute } from "@react-navigation/native"
+import firebase from "firebase/app"
+
+const ConfirmScreen = () => {
+  const [code, setCode] = useState("")
+  const { phoneNumber } = useRoute().params
+
+  const onSubmitCode = async () => {
+    const { token } = await doorman.verifyCode({
+      code,
+      phoneNumber
+    })
+
+    if (token) {
+      firebase.auth().signInWithCustomToken(token)
+    }
+  }
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        onChangeText={setCode}
+        value={code}
+        placeholder="Enter your code"
+        keyboardType="number-pad"
+        maxLength={6}
+      />
+      <Button title="Sign in!" onPress={onSubmitCode} />
+    </View>
+  )
+}
+
+export default ConfirmScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center"
+  }
+})
 ```

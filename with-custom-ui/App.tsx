@@ -1,19 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { DoormanProvider } from 'react-native-doorman'
+import Navigation from './src/Navigation'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore' // if you're using firestore
+
+if (!firebase.apps.length) {
+  firebase.initializeApp({
+    // you can replace with your firebase config
+    apiKey: 'AIzaSyCn8HyP1tVZiagk-YvZRwjSwKdwQw5Pvng',
+    authDomain: 'tester-9d8bb.firebaseapp.com',
+    databaseURL: 'https://tester-9d8bb.firebaseio.com',
+    projectId: 'tester-9d8bb',
+    storageBucket: 'tester-9d8bb.appspot.com',
+    messagingSenderId: '760778283392',
+    appId: '1:760778283392:web:05cb35d0837c93c6584965'
+  })
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <DoormanProvider publicProjectId="djzlPQFxxzJikNQgLwxN">
+      <Navigation />
+    </DoormanProvider>
+  )
+}
+
+export default App

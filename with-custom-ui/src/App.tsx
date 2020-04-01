@@ -23,11 +23,14 @@ const AfterAuth = () => {
       </Paragraph>
       <Paragraph
         style={styles.text}
-      >{`How easy was that? (See After-Auth.tsx to edit me.)`}</Paragraph>
+      >{`How easy was that? (See src/Auth.tsx to edit me.)`}</Paragraph>
       <Paragraph style={styles.text}>
         Your unique user ID is:{' '}
         <Text style={{ fontWeight: 'bold' }}> {uid}</Text>
       </Paragraph>
+      <Paragraph
+        style={styles.text}
+      >{`FYI, react-native-doorman has awesome UI and logic components for all things phone auth.`}</Paragraph>
       <View style={styles.button}>
         <Button title="Sign out" onPress={signOut} color="white" />
       </View>

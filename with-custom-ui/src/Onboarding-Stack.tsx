@@ -8,8 +8,8 @@ const Stack = createStackNavigator()
 const OnboardingStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Phone" component={PhoneScreen} />
-      <Stack.Screen name="Confirm" component={ConfirmScreen} />
+      <Stack.Screen name="PhoneScreen" component={PhoneScreen} />
+      <Stack.Screen name="ConfirmScreen" component={ConfirmScreen} />
     </Stack.Navigator>
   )
 }

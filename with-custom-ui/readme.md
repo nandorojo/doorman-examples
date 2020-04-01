@@ -73,6 +73,8 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 
 Delete everything from `App.tsx` and replace it with this:
 
+**`App.tsx`**
+
 ```jsx
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -96,20 +98,24 @@ Here, all we're doing is initializing our Firebase project. This must be done at
 
 Next, let's add the `DoormanProvider` to the same file
 
+**`App.tsx`**
+
 ```es6
 import React from 'react'
 import { DoormanProvider } from 'react-native-doorman'
-import Navigation from './Navigation' // <-- we'll make this in the next step 🙃
+import Navigation from './src/Navigation' // <-- we'll make this in the next step 🙃
 
 // initialize firebase code here
 
-export default () => {
+const App = () => {
   return (
     <DoormanProvider publicProjectId="djzlPQFxxzJikNQgLwxN">
       <Navigation />
     </DoormanProvider>
   )
 }
+
+export default App
 ```
 
 You can replace the `publicProjectId` with your own, found on the [Doorman dashboard](https://app.doorman.cool).
@@ -191,18 +197,32 @@ Here's the full file:
 
 ```jsx
 import React, { useState } from 'react'
-import { View, StyleSheet, TextInput, Button } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  ActivityIndicator
+} from 'react-native'
 import { doorman } from 'react-native-doorman'
 import { useNavigation } from '@react-navigation/native'
 
 const PhoneScreen = () => {
   const [phoneNumber, setPhoneNumber] = useState('+1')
   const { navigate } = useNavigation()
+  const [loading, setLoading] = useState(false)
 
   const onSubmitPhone = async () => {
+    setLoading(true)
+
     const { success } = await doorman.signInWithPhoneNumber({ phoneNumber })
+
+    setLoading(false)
+
     if (success) {
-      navigate('ConfirmScreen')
+      navigate('ConfirmScreen', {
+        phoneNumber
+      })
     }
   }
 
@@ -213,8 +233,13 @@ const PhoneScreen = () => {
         value={phoneNumber}
         placeholder="Enter your phone number"
         keyboardType="number-pad"
+        style={styles.input}
       />
-      <Button title="Sign in!" onPress={onSubmitPhone} />
+      {loading ? (
+        <ActivityIndicator style={{ marginTop: 8 }} />
+      ) : (
+        <Button title="Sign in!" onPress={onSubmitPhone} />
+      )}
     </View>
   )
 }
@@ -225,13 +250,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center'
+  },
+  input: {
+    padding: 20,
+    backgroundColor: 'white',
+    fontSize: 20
   }
 })
 ```
 
 This screen is straight-forward. Once the user clicks sign in, we call `doorman.signInWithPhoneNumber`.
 
-If `success` is `true`, then we navigate to the `ConfirmScreen`. Speaking of, let's create the `ConfirmScreen`!
+If `success` is `true`, then we navigate to the `ConfirmScreen`. We also send the `phoneNumber` as a param to `ConfirmScreen`, since we'll need it in that screen.
+
+Speaking of, let's create the `ConfirmScreen`!
 
 ## 4. Create code confirmation screen
 
@@ -260,7 +292,13 @@ Let's see how this looks in action:
 
 ```jsx
 import React, { useState } from 'react'
-import { View, TextInput, Button, StyleSheet } from 'react-native'
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  ActivityIndicator
+} from 'react-native'
 import { doorman } from 'react-native-doorman'
 import { useRoute } from '@react-navigation/native'
 import firebase from 'firebase/app'
@@ -268,8 +306,11 @@ import firebase from 'firebase/app'
 const ConfirmScreen = () => {
   const [code, setCode] = useState('')
   const { phoneNumber } = useRoute().params
+  const [loading, setLoading] = useState(false)
 
   const onSubmitCode = async () => {
+    setLoading(true)
+
     const { token } = await doorman.verifyCode({
       code,
       phoneNumber
@@ -277,6 +318,8 @@ const ConfirmScreen = () => {
 
     if (token) {
       firebase.auth().signInWithCustomToken(token)
+    } else {
+      setLoading(false)
     }
   }
 
@@ -288,8 +331,13 @@ const ConfirmScreen = () => {
         placeholder="Enter your code"
         keyboardType="number-pad"
         maxLength={6}
+        style={styles.input}
       />
-      <Button title="Sign in!" onPress={onSubmitCode} />
+      {loading ? (
+        <ActivityIndicator style={{ marginTop: 8 }} />
+      ) : (
+        <Button title="Submit code 🔥" onPress={onSubmitCode} />
+      )}
     </View>
   )
 }
@@ -300,6 +348,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center'
+  },
+  input: {
+    padding: 20,
+    backgroundColor: 'white',
+    fontSize: 20
   }
 })
 ```
@@ -338,6 +391,8 @@ That's it for our stack! Now, let's add this back in our `Navigation.tsx` file.
 
 Currently, our `src/Navigation.tsx` file looks like this (plus imports at the top):
 
+**`src/Navigation.tsx`**
+
 ```jsx
 const Navigation = () => {
   const { loading, user } = useAuthGate()
@@ -351,6 +406,8 @@ const Navigation = () => {
 Let's import our `OnboardingStack`, and only render it if there is **not** a user signed in.
 
 If there **is** a user signed in, we render our `<App />` screen (which isn't actually made yet...😇)
+
+**`src/Navigation.tsx`**
 
 ```jsx
 import OnboardingStack from './Onboarding-Stack'
@@ -377,8 +434,6 @@ If you already have an app you want to show after the user has auth'd, you can p
 ## 7. Create an `App.tsx` file
 
 Our `App.tsx` component will be shown **after the user has signed in**.
-
-Your app might have different behavior, where some screens are visible and some aren't, but we'll leave that for a different scenario.
 
 **`App.tsx`**
 
@@ -443,4 +498,4 @@ Ok, I know I said we were only doing custom UI, but Doorman exports some UI comp
 
 # Your React Native app now has custom phone auth 🎉
 
-Need help? Have questions? You can email me (fernando@wearpatos.com) or hit me up on our website's live chat (https://doorman.cool).
+Need help? Have questions? You can email me (fernando@wearpatos.com) or hit me up on our website's live chat (https://doorman.cool). Also, you can find me on [twitter](https://twitter.com/fernandotherojo)

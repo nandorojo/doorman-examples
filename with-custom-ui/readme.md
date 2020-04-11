@@ -176,9 +176,7 @@ However, for this example, we're building our own screens entirely.
 
 **Create a file called `Phone-Screen.tsx` in the `src` folder.**
 
-This is where the user will enter their phone number.
-
-Here we're going to create a screen where the user enters their phone number.
+As the name suggests, we're going to create a screen where the user enters their phone number.
 
 We're going to call the `doorman.signInWithPhoneNumber` function, and if it succeeds, we will send them to the code verification screen, like this:
 
@@ -186,7 +184,7 @@ We're going to call the `doorman.signInWithPhoneNumber` function, and if it succ
 const onSubmitPhone = async () => {
   const { success } = await doorman.signInWithPhoneNumber({ phoneNumber })
   if (success) {
-    navigate('ConfirmScreen')
+    navigate('ConfirmScreen', { phoneNumber })
   }
 }
 ```
@@ -376,8 +374,8 @@ const Stack = createStackNavigator()
 const OnboardingStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Phone" component={PhoneScreen} />
-      <Stack.Screen name="Confirm" component={ConfirmScreen} />
+      <Stack.Screen name="PhoneScreen" component={PhoneScreen} />
+      <Stack.Screen name="ConfirmScreen" component={ConfirmScreen} />
     </Stack.Navigator>
   )
 }
@@ -431,11 +429,11 @@ If you don't have an `App` component made, you can go on to step 7, where I'll m
 
 If you already have an app you want to show after the user has auth'd, you can put it in place of the `App` in `Navigation.tsx`.
 
-## 7. Create an `App.tsx` file
+## 7. Create `src/App.tsx`, shown after user is auth'd
 
-Our `App.tsx` component will be shown **after the user has signed in**.
+Our `src/App.tsx` component will be shown **after the user has signed in**.
 
-**`App.tsx`**
+**`src/App.tsx`**
 
 ```jsx
 import React from 'react'

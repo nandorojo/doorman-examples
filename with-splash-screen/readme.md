@@ -1,14 +1,12 @@
-# 🚪 ⚡️ Basic Doorman example
+# 🚪 ⚡️ Doorman Splash Screen Example
 
 This example aims to show a really minimal way to use Doorman in your app, with a custom Splash Screen shown before the auth flow.
-
-<img src="./assets/Frame 1.png" />
 
 ## 🏄🏾‍♂️ To try out this example:
 
 ```sh
 git clone https://github.com/nandorojo/doorman-examples
-cd with-react-navigation-v5
+cd with-splash-screen
 yarn
 expo start --ios # or expo start --android
 ```

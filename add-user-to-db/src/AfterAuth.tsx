@@ -13,7 +13,7 @@ const AfterAuth = () => {
   return (
     <Page
       style={{ marginTop: 100, alignItems: 'center' }}
-      background={() => <ScreenBackground />}
+      background={() => <ScreenBackground color={['green', 'orange']} />}
     >
       <H1 style={{ color: 'white' }}>Welcome to Doorman.</H1>
       <Paragraph style={{ color: 'white' }}>

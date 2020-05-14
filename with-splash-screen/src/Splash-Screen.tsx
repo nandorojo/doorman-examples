@@ -14,7 +14,7 @@ type Props = {
 
 const SplashScreen = ({ next }: Props) => {
   return (
-    <Page background={() => <ScreenBackground />}>
+    <Page style={styles.page} background={() => <ScreenBackground />}>
       <H1 style={styles.text}>
         Welcome to Doorman! This is your splash screen.
       </H1>
@@ -23,7 +23,7 @@ const SplashScreen = ({ next }: Props) => {
       >{`😇 Doorman brings Firebase phone auth to Expo apps, effortlessly.`}</Paragraph>
       <Paragraph
         style={styles.text}
-      >{`👀 Peep the 3 files in ./src to see how easy it is.`}</Paragraph>
+      >{`👀 Peep the 2 files in ./src to see how easy it is.`}</Paragraph>
       <Paragraph
         style={styles.text}
       >{`🚪 Also, our website: doorman.cool`}</Paragraph>

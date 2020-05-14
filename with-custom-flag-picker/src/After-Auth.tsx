@@ -9,7 +9,7 @@ import {
 } from 'react-native-doorman'
 import Constants from 'expo-constants'
 
-const App = () => {
+const AfterAuth = () => {
   const { uid, signOut } = useDoormanUser()
   return (
     <Page
@@ -35,7 +35,7 @@ const App = () => {
   )
 }
 
-export default App
+export default AfterAuth
 
 const styles = StyleSheet.create({
   page: {

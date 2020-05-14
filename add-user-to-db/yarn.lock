@@ -5644,18 +5644,24 @@ react-dom@~16.9.0:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
+react-doorman@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-doorman/-/react-doorman-0.0.4.tgz#a360c9d42fb0b4728d9915b42a1405a4715a6bec"
+  integrity sha512-EG6DwbRVUK4+GBQtmP6cmXsr3WZr4FkYiZdrJ3/EtPUkZf4IbHCGaMMluFKBJ/P9SNirrxkgmVlo6ajOYXSA8A==
+
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-doorman@^1.1.24:
-  version "1.1.24"
-  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.1.24.tgz#9205f8d40eeebdb5ca6c1311dac81a9633723280"
-  integrity sha512-XFNqC9a+dReS6vuoiw1ofdRnLh4nWkciQaNpyW1j0nUOH2FTAZ9RSyXjCYppxYCXxvvVxBDLKJeshhuVmyJjwQ==
+react-native-doorman@^1.2.0-alpha.1:
+  version "1.2.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.2.0-alpha.1.tgz#afddb34279f8b406f2f825b90d7d69c9abb33702"
+  integrity sha512-dz4X/ouNaMQVi9j4hF3QgNvbXGJp+VOpjkSJTwvbGgWZ47pgqg+UlC1SXWpSZ1ySAIIwPKY2ZPSYluXmFrcf2Q==
   dependencies:
     "@nandorojo/react-native-phone-input" "^0.2.8"
     expo-linear-gradient "^8.0.0"
+    react-doorman "^0.0.4"
     react-native-elements "^1.2.7"
     react-native-extended-stylesheet "^0.12.0"
     react-native-paper "^3.6.0"

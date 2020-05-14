@@ -1,9 +1,4 @@
-import { withPhoneAuth } from 'react-native-doorman'
-
-import App from './src/App'
-import SplashScreen from './src/Splash-Screen'
-
-import firebase from 'firebase/app'
+import * as firebase from 'firebase'
 import 'firebase/auth'
 
 if (!firebase.apps.length) {
@@ -19,20 +14,4 @@ if (!firebase.apps.length) {
   })
 }
 
-export default withPhoneAuth(App, {
-  doorman: {
-    // you can replace this with your publicProjectId from https://doorman.cool
-    publicProjectId: 'djzlPQFxxzJikNQgLwxN',
-  },
-
-  SplashScreen, // <-- add a splash screen
-  // other customizations 👇
-  onAuthStateChanged: user => {
-    if (user) {
-      // if user is signed in...
-    } else {
-      // if user is not signed in...
-    }
-  },
-  initialPhoneNumber: '+1',
-})
+export { default } from './src'

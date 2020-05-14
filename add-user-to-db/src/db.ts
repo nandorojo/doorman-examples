@@ -1,5 +1,8 @@
-import firebase from 'firebase/app'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
 
+// you can replace this with your Firebase config!
 export const firebaseConfig = {
   apiKey: 'AIzaSyCn8HyP1tVZiagk-YvZRwjSwKdwQw5Pvng',
   authDomain: 'tester-9d8bb.firebaseapp.com',

@@ -1282,6 +1282,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@nandorojo/react-native-phone-input@^0.2.8":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@nandorojo/react-native-phone-input/-/react-native-phone-input-0.2.9.tgz#7ef941d74a9df356da061b0b1b9a2e6dc04a35e7"
+  integrity sha512-/nJSLHY/81VTRecfTypzeYWf7Diei6GxtqiXC5QbLevcCDAbHCbIRNpQchghbtUhqEMGXEEdaFFd17+hxYwqaQ==
+  dependencies:
+    "@types/react-native-phone-input" "^0.2.0"
+    google-libphonenumber "^3.2.2"
+    lodash "^4.17.4"
+    prop-types "^15.5.10"
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@protobufjs/aspromise/-/aspromise-1.1.2.tgz#9b8b0cc663d669a7d8f6f5d0893a14d348f30fbf"
@@ -1520,6 +1530,14 @@
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.1.tgz#937fab3194766256ee09fcd40b781740758617e7"
   integrity sha512-lhbQXx9HKZAPgBkISrBcmAcMpZsmpe/Cd/hY7LGZS5OfkySUBItnPZHgQPssWYUET8elF+yCFBbP1Q0RZPTdaw==
+
+"@types/react-native-phone-input@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-phone-input/-/react-native-phone-input-0.2.0.tgz#ef54e0d72a508b6d65eaf853c7bfe389ed29861b"
+  integrity sha512-wB0/PMpxCZBWXA2Ftz86+XzATWpqpGXsMVDnVTMK7Mnu4nIQKP2kN/aU5Xb/1Mne4DdlLXAvTRQrpHbeI0sodg==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
 
 "@types/react-native-vector-icons@^6.4.4":
   version "6.4.5"
@@ -5651,11 +5669,12 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-doorman@^1.1.10:
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.1.10.tgz#3b6d186067456e9c36060532b35adbe81cbff82e"
-  integrity sha512-Edbg5k6wtJWHsdSa2muIiUsuMH6gF4Z88Iy9hrpwrsg9szZ3Li66X6chMOMEt2aMA1Dv5CmGlaLST6cpWzo+Og==
+react-native-doorman@^1.1.28-snack:
+  version "1.1.28-snack"
+  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.1.28-snack.tgz#def1fa1a160b9a99511efd861e1a48dc52ad1ab2"
+  integrity sha512-nBBBr5Pg4H3/N4w9oNUHDR8f4mcZL55SX1jgDUjU4lOJOGxTqUPZRBQRyOcbkCLo7ceAVY/jWKbE3h0cDZ57Zg==
   dependencies:
+    "@nandorojo/react-native-phone-input" "^0.2.8"
     expo-linear-gradient "^8.0.0"
     react-native-elements "^1.2.7"
     react-native-extended-stylesheet "^0.12.0"

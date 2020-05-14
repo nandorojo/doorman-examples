@@ -5654,10 +5654,10 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-doorman@^1.2.0-alpha.1:
-  version "1.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.2.0-alpha.1.tgz#afddb34279f8b406f2f825b90d7d69c9abb33702"
-  integrity sha512-dz4X/ouNaMQVi9j4hF3QgNvbXGJp+VOpjkSJTwvbGgWZ47pgqg+UlC1SXWpSZ1ySAIIwPKY2ZPSYluXmFrcf2Q==
+react-native-doorman@^1.2.0-alpha.2:
+  version "1.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/react-native-doorman/-/react-native-doorman-1.2.0-alpha.2.tgz#3690785a1d05157c7efaa1122cf7d28ff50223ae"
+  integrity sha512-gNIviqWa3fhiyYtMJ4uiuKIFnPdBCFIiz9p2rELvWiIXw9rdqRh75F0U/CHj96y79ygHPGXxlec3/D932YXM/Q==
   dependencies:
     "@nandorojo/react-native-phone-input" "^0.2.8"
     expo-linear-gradient "^8.0.0"
